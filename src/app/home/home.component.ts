@@ -9,16 +9,16 @@ import { ArticleListConfig, TagsService, UserService } from '../shared';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  isAuthenticated: boolean;
+  listConfig: ArticleListConfig = new ArticleListConfig();
+  tags: Array<string> = [];
+  tagsLoaded = false;
+
   constructor(
     private router: Router,
     private tagsService: TagsService,
     private userService: UserService
   ) {}
-
-  isAuthenticated: boolean;
-  listConfig: ArticleListConfig = new ArticleListConfig();
-  tags: Array<string> = [];
-  tagsLoaded = false;
 
   ngOnInit() {
     this.userService.isAuthenticated.subscribe(
